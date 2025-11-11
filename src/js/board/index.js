@@ -2,9 +2,9 @@ import domObjects from '../DomObjects';
 import { changeClass } from '../util';
 import createBorder from './util/createBorder';
 import {
-  createBlockDiv,
-  createRow,
-  createRowBorder,
+	createBlockDiv,
+	createRow,
+	createRowBorder,
 } from './util/createDomElements';
 import killEventListeners from './util/killEventListeners';
 import resetGameButton from './util/resetGameButton';

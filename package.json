@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@pwabuilder/pwaupdate": "^0.2.0",
+    "caniuse-lite": "^1.0.30001754",
     "dexie": "^3.0.3"
   },
   "devDependencies": {
