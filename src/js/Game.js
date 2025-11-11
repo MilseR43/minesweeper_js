@@ -1,7 +1,7 @@
 import Board from './board';
 import emptyBoard from './board/util/emtyBoard';
 import DomListener from './DomListener';
-import addGameResult from 'db/addGameResulteResult';
+import addGameResult from './db/addGameResult';
 import Points from './Points';
 import Timer from './Timer';
 

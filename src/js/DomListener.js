@@ -1,8 +1,6 @@
 /* eslint-disable max-statements */
 /* eslint class-methods-use-this: ["error", { "exceptMethods": ["handleClick"] }] */
-
-domObjectsDomObjects;
-
+import domObjects from './DomObjects';
 import updateStatsData from './db/statsData';
 import { changeClass, hasClass } from './util';
 

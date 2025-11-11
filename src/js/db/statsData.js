@@ -1,5 +1,5 @@
-import { showGameStats, showTime }wGameSta./utilts, showTime } from '../util';
-import getDb
+import getDb from '.';
+import { showGameStats, showTime } from '../util';
 import changeBestGame from './changeBestGames';
 
 const getLast5Games = async (db) => {
