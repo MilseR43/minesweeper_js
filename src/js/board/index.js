@@ -7,7 +7,6 @@ import {
   createRowBorder,
 } from './util/createDomElements';
 import killEventListeners from './util/killEventListeners';
-import logBoard from './util/logBoard';
 import resetGameButton from './util/resetGameButton';
 
 const BLOCK_SIZE = 16;
@@ -144,7 +143,7 @@ export default class Board {
 		createBorder('bottom', this);
 		this.createBombs();
 		this.countNumbers();
-		logBoard(this.board);
+		// logBoard(this.board);
 	}
 
 	/**

@@ -1,9 +1,9 @@
-import Board from "./board";
-import emptyBoard from "./board/util/emtyBoard";
-import addGameResult from "./db/addGameResult";
-import DomListener from "./DomListener";
-import Points from "./Points";
-import Timer from "./Timer";
+import Board from './board';
+import emptyBoard from './board/util/emtyBoard';
+import DomListener from './DomListener';
+import addGameResult from 'db/addGameResulteResult';
+import Points from './Points';
+import Timer from './Timer';
 
 class Game {
 	/**
@@ -33,9 +33,9 @@ class Game {
 			emptyBoard();
 		}
 
-		const iRows = parseInt(document.getElementById("input-rows").value);
-		const iCols = parseInt(document.getElementById("input-columns").value);
-		const iBombs = parseInt(document.getElementById("input-bombs").value);
+		const iRows = parseInt(document.getElementById('input-rows').value);
+		const iCols = parseInt(document.getElementById('input-columns').value);
+		const iBombs = parseInt(document.getElementById('input-bombs').value);
 
 		// min 8 rows and cols and 1 bomb
 		this.rows = iRows < 8 ? 8 : iRows;
@@ -62,9 +62,9 @@ class Game {
 	 */
 	newGame() {
 		try {
-			window.plausible("newGame");
+			window.plausible('newGame');
 		} catch {
-			console.log("plausible not found");
+			console.warn('plausible not found');
 		}
 		this.clearGame();
 		this.setupGame();
@@ -149,11 +149,10 @@ class Game {
 	winGame() {
 		if (!this.gameWon) {
 			const time = this.timer.getFinishTime();
-			console.log("time =>", time);
 			this.board.winGame();
 			this.timer.stopTimer();
 			const settingsCode = this.getSettingsCode();
-			addGameResult({ mode: settingsCode, result: "w", time });
+			addGameResult({ mode: settingsCode, result: 'w', time });
 		}
 
 		this.gameWon = true;
@@ -190,7 +189,7 @@ class Game {
 		this.board.loseGame();
 
 		const settingsCode = this.getSettingsCode();
-		addGameResult({ mode: settingsCode, result: "l", time });
+		addGameResult({ mode: settingsCode, result: 'l', time });
 	}
 
 	/**
@@ -208,7 +207,7 @@ class Game {
 	applyZoom(newZoom = undefined) {
 		this.zoom = newZoom || this.zoom;
 
-		const game = document.getElementById("game");
+		const game = document.getElementById('game');
 		game.style.zoom = this.zoom;
 	}
 
