@@ -106,29 +106,27 @@ export default class Board {
 	}
 
 	/**
-	 * Create Bombs
+	 * Create Bombs using Fisher-Yates shuffle algorithm
+	 * Guarantees O(bombs) complexity regardless of board size
 	 */
 	createBombs() {
-		const isUniqueBomb = (row, col) =>
-			!this.bombsArray.some((bomb) => bomb.row === row && bomb.col === col);
+		// Create array of all possible positions (0 to rows*cols-1)
+		const totalCells = this.rows * this.cols;
+		const positions = Array.from({ length: totalCells }, (_, i) => i);
 
-		for (let i = 1; i <= this.bombs; i += 1) {
-			let unique = false;
-			let randRow;
-			let randCol;
-			// Generate random Bombs and check if they are unique
-			while (!unique) {
-				randRow = Math.floor(Math.random() * this.rows);
-				randCol = Math.floor(Math.random() * this.cols);
+		// Fisher-Yates shuffle - swap random elements to the end
+		for (let i = totalCells - 1; i > totalCells - this.bombs - 1; i -= 1) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[positions[i], positions[j]] = [positions[j], positions[i]];
+		}
 
-				if (isUniqueBomb(randRow, randCol)) {
-					unique = true;
-				}
-			}
-
-			this.createBomb(randRow, randCol);
-			// Add Bomb to the bombsArray
-			this.bombsArray.push({ row: randRow, col: randCol });
+		// Take last 'bombs' elements and convert back to row/col
+		for (let i = totalCells - this.bombs; i < totalCells; i += 1) {
+			const pos = positions[i];
+			const row = Math.floor(pos / this.cols);
+			const col = pos % this.cols;
+			this.createBomb(row, col);
+			this.bombsArray.push({ row, col });
 		}
 	}
 
