@@ -38,9 +38,9 @@ class Game {
 		const iBombs = parseInt(document.getElementById('input-bombs').value);
 
 		// min 8 rows and cols and 1 bomb
-		this.rows = iRows < 8 ? 8 : iRows;
-		this.columns = iCols < 8 ? 8 : iCols;
-		this.bombs = iBombs < 1 ? 1 : iBombs;
+		this.rows = iRows < 0 ? 0 : iRows;
+		this.columns = iCols < 0 ? 0 : iCols;
+		this.bombs = iBombs < 0 ? 0 : iBombs;
 
 		this.amountFields = this.rows * this.columns - this.bombs;
 		this.board = new Board({
